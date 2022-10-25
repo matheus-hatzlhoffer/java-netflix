@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -35,12 +33,10 @@ public class Actor {
     // private ArrayList<Movie> movies;
 
     @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date", nullable = false)
     private LocalDate createDate;
 
     @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modify_date", nullable = false)
     private LocalDate modifyDate;
 
@@ -84,5 +80,4 @@ public class Actor {
         this.modifyDate = modifyDate;
     }
 
-    
 }
