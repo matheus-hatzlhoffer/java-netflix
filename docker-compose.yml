@@ -1,0 +1,22 @@
+version: "3"
+services:
+  mysqldb:
+    image: mysql:8
+    networks:
+      - netflix-sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=netflix
+
+  employee-jdbc:
+    image: hatzlhoffer/netflix-master
+    ports:
+      - "8080:8080"
+    networks:
+      - netflix-sql
+    depends_on:
+      - mysqldb
+    restart: on-failure
+
+networks:
+  netflix-sql:
